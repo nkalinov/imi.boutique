@@ -3,9 +3,12 @@ import styles from "./Layout.module.css"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
 export default ({ children }) => {
-  const data = useStaticQuery(
+  const { allMarkdownRemark, site } = useStaticQuery(
     graphql`
       query {
+        allMarkdownRemark {
+          distinct(field: frontmatter___categories)
+        }
         site {
           siteMetadata {
             title
@@ -19,11 +22,17 @@ export default ({ children }) => {
     <div className={styles.layout}>
       <header>
         <h1>
-          <Link to="/">{data.site.siteMetadata.title}</Link>
+          <Link to="/">{site.siteMetadata.title}</Link>
         </h1>
         <nav>
-          <Link to="/women">Women</Link>
-          <Link to="/men">Men</Link>
+          {allMarkdownRemark.distinct.map(category => (
+            <Link key={category} to={`/${category}`}>
+              {category[0].toUpperCase()}
+              {category.slice(1)}
+            </Link>
+          ))}
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
       </header>
       {children}

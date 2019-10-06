@@ -1,58 +1,43 @@
+const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// exports.onCreateNode = ({ node, getNode, actions }) => {
-//   if (node.internal.type === `MarkdownRemark`) {
-//     const slug = createFilePath({ node, getNode, basePath: `src/products` })
-//
-//     actions.createNodeField({
-//       node,
-//       name: `slug`,
-//       value: slug,
-//     })
-//   }
-// }
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  if (node.internal.type === `MarkdownRemark`) {
+    // const slug = createFilePath({ node, getNode, basePath: `src/products` })
+    const fileNode = getNode(node.parent)
 
-const path = require(`path`)
+    actions.createNodeField({
+      node,
+      name: `slug`,
+      value: fileNode.relativeDirectory,
+    })
+  }
+}
 
-exports.createPages = ({ graphql, actions }) => {
-  const ProductTemplate = path.resolve(`src/templates/Product.js`)
-
-  return graphql(
-    `
-      query AllProductsDirectories {
-        allDirectory {
-          edges {
-            node {
-              relativePath
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
             }
           }
         }
       }
-    `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors
     }
-
-    result.data.allDirectory.edges.forEach(({ node }) => {
-      if (!node.relativePath) {
-        return
-      }
-      actions.createPage({
-        // Path for this page — required
-        path: `${node.relativePath}`,
-        component: ProductTemplate,
-        context: {
-          // Add optional context data to be inserted
-          // as props into the page component..
-          //
-          // The context data can also be used as
-          // arguments to the page GraphQL query.
-          //
-          // The page "path" is always available as a GraphQL
-          // argument.
-        },
-      })
+  `)
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`src/templates/Product.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.fields.slug,
+      },
     })
   })
 }

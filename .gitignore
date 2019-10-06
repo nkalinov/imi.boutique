@@ -68,5 +68,5 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-src/products/*.jpg
-src/products/*.JPG
+src/products/**/*.jpg
+src/products/**/*.JPG

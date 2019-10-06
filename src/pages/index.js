@@ -1,14 +1,23 @@
 import React from "react"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 
 export default ({ data: { allMarkdownRemark } }) => {
   return (
     <Layout>
       {allMarkdownRemark.edges.map(({ node }) => (
-        <div key={node.id}>
+        <a href={node.fields.slug} key={node.id}>
           <h2>{node.frontmatter.title}</h2>
-        </div>
+          <p>{node.frontmatter.content.join(", ")}</p>
+          {node.frontmatter.images && (
+            <Img
+              fixed={node.frontmatter.images[0].childImageSharp.fixed}
+              alt="Image"
+              title={node.frontmatter.title}
+            />
+          )}
+        </a>
       ))}
     </Layout>
   )
@@ -23,12 +32,16 @@ export const query = graphql`
           frontmatter {
             title
             content
-            category
-          }
-          parent {
-            ... on File {
-              relativeDirectory
+            images {
+              childImageSharp {
+                fixed(width: 150) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
             }
+          }
+          fields {
+            slug
           }
         }
       }
