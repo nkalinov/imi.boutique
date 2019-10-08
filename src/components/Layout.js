@@ -20,19 +20,23 @@ export default ({ children }) => {
 
   return (
     <div className={styles.layout}>
-      <header>
+      <header className={styles.header}>
         <h1>
           <Link to="/">{site.siteMetadata.title}</Link>
         </h1>
-        <nav>
+        <nav className={styles.nav}>
           {allMarkdownRemark.distinct.map(category => (
-            <Link key={category} to={`/${category}`}>
+            <Link key={category} to={`/${category}`} className={styles.navLink}>
               {category[0].toUpperCase()}
               {category.slice(1)}
             </Link>
           ))}
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/about" className={styles.navLink}>
+            About
+          </Link>
+          <Link to="/contact" className={styles.navLink}>
+            Contact
+          </Link>
         </nav>
       </header>
       {children}

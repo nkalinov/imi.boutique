@@ -1,5 +1,22 @@
 .layout {
-  margin: 3rem auto;
+  margin: 0 auto;
   max-width: 650px;
   padding: 0 1rem;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.header {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.1rem;
+}
+
+.nav {
+}
+
+.navLink {
+  margin: 0 5px;
 }

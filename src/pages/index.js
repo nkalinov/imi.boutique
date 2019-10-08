@@ -2,22 +2,13 @@ import React from "react"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import Tile from "../components/Tile"
 
 export default ({ data: { allMarkdownRemark } }) => {
   return (
     <Layout>
       {allMarkdownRemark.edges.map(({ node }) => (
-        <a href={node.fields.slug} key={node.id}>
-          <h2>{node.frontmatter.title}</h2>
-          <p>{node.frontmatter.content.join(", ")}</p>
-          {node.frontmatter.images && (
-            <Img
-              fixed={node.frontmatter.images[0].childImageSharp.fixed}
-              alt="Image"
-              title={node.frontmatter.title}
-            />
-          )}
-        </a>
+        <Tile key={node.id} node={node}></Tile>
       ))}
     </Layout>
   )
