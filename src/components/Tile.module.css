@@ -1,14 +1,16 @@
 .tile {
   position: relative;
-  min-width: 150px;
-  min-height: 225px;
+  /*width: 100%;*/
+  max-width: 220px;
+  /*max-height: 225px;*/
   display: inline-block;
+  margin: 10px 20px;
 }
 
 .title {
-  position: absolute;
-  text-align: center;
-  bottom: 5px;
+  /*position: absolute;*/
+  /*text-align: center;*/
+  /*bottom: 5px;*/
 }
 
 .content {

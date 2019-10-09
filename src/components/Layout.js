@@ -39,7 +39,7 @@ export default ({ children }) => {
           </Link>
         </nav>
       </header>
-      {children}
+      <div className={styles.content}>{children}</div>
     </div>
   )
 }

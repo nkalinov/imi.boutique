@@ -5,8 +5,6 @@ import styles from "./Tile.module.css"
 export default function Tile({ node }) {
   return (
     <a href={node.fields.slug} className={styles.tile}>
-      <h4 className={styles.title}>{node.frontmatter.title}</h4>
-      <p className={styles.content}>{node.frontmatter.content.join(", ")}</p>
       {node.frontmatter.images && (
         <Img
           fixed={node.frontmatter.images[0].childImageSharp.fixed}
@@ -15,6 +13,8 @@ export default function Tile({ node }) {
           className={styles.image}
         />
       )}
+      <h4 className={styles.title}>{node.frontmatter.title}</h4>
+      <p className={styles.content}>{node.frontmatter.content.join(", ")}</p>
     </a>
   )
 }
