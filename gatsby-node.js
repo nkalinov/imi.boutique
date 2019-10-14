@@ -9,7 +9,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     actions.createNodeField({
       node,
       name: `slug`,
-      value: fileNode.relativeDirectory,
+      value: `/${node.frontmatter.categories
+        .concat(fileNode.relativeDirectory)
+        .join("/")}`,
     })
   }
 }

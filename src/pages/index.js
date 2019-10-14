@@ -1,7 +1,6 @@
 import React from "react"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import Tile from "../components/Tile"
 
 export default ({ data: { allMarkdownRemark } }) => {

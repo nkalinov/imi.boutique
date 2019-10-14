@@ -1,10 +1,16 @@
 import Img from "gatsby-image"
 import React from "react"
 import styles from "./Tile.module.css"
+import { Link } from "gatsby"
+import { rhythm } from "../utils/typography"
 
 export default function Tile({ node }) {
   return (
-    <a href={node.fields.slug} className={styles.tile}>
+    <Link
+      to={node.fields.slug}
+      className={styles.tile}
+      style={{ margin: rhythm(1) }}
+    >
       {node.frontmatter.images && (
         <Img
           fixed={node.frontmatter.images[0].childImageSharp.fixed}
@@ -15,6 +21,6 @@ export default function Tile({ node }) {
       )}
       <h4 className={styles.title}>{node.frontmatter.title}</h4>
       <p className={styles.content}>{node.frontmatter.content.join(", ")}</p>
-    </a>
+    </Link>
   )
 }

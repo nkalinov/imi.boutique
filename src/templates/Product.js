@@ -1,13 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
+import Img from "gatsby-image"
 
-export default ({ data }) => {
-  const post = data.markdownRemark
+export default ({ data: { markdownRemark } }) => {
   return (
     <Layout>
-      <h1>{post.frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <h1>{markdownRemark.frontmatter.title}</h1>
+      {markdownRemark.frontmatter.images &&
+        markdownRemark.frontmatter.images.map(({ childImageSharp }) => (
+          <Img
+            key={childImageSharp.id}
+            fluid={childImageSharp.fluid}
+            alt="Image"
+          />
+        ))}
+      <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
     </Layout>
   )
 }
@@ -18,6 +26,15 @@ export const query = graphql`
       html
       frontmatter {
         title
+        content
+        images {
+          childImageSharp {
+            id
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
