@@ -20,7 +20,7 @@ export default function Tile({ node }) {
         />
       )}
       <h4 className={styles.title}>{node.frontmatter.title}</h4>
-      <p className={styles.content}>{node.frontmatter.content.join(", ")}</p>
+      <span className={styles.content}>{node.frontmatter.content.join(", ")}</span>
     </Link>
   )
 }

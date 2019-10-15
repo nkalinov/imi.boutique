@@ -2,16 +2,15 @@
   position: relative;
   max-width: 220px;
   display: inline-block;
-  /*margin: 10px 20px;*/
+  background: none;
 }
 
 .title {
-  /*position: absolute;*/
-  /*text-align: center;*/
-  /*bottom: 5px;*/
+  margin-bottom: 0;
 }
 
 .content {
+  font-size: 12px;
 }
 
 .image {

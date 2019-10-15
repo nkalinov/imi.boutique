@@ -18,9 +18,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const result = await graphql(`
+  const { data } = await graphql(`
     query {
       allMarkdownRemark {
+        distinct(field: frontmatter___categories)
         edges {
           node {
             fields {
@@ -31,15 +32,20 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  // create product list pages
+  data.allMarkdownRemark.distinct.forEach(category => {
+    createPage({
+      path: `/${category}`,
+      component: path.resolve(`src/templates/ProductsList.js`),
+      context: { category },
+    })
+  })
+  // create product pages
+  data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(`src/templates/Product.js`),
-      context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        slug: node.fields.slug,
-      },
+      context: { slug: node.fields.slug },
     })
   })
 }
