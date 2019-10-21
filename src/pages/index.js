@@ -19,9 +19,11 @@ export const query = graphql`
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
-            materials
             images {
               childImageSharp {
                 fixed(width: 220) {
@@ -29,9 +31,6 @@ export const query = graphql`
                 }
               }
             }
-          }
-          fields {
-            slug
           }
         }
       }

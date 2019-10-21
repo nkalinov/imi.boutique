@@ -9,9 +9,6 @@ export default ({ data: { markdownRemark } }) => {
       <h4 style={{ textAlign: "center" }}>
         {markdownRemark.frontmatter.title}
       </h4>
-      <p style={{ textAlign: "center" }}>
-        {markdownRemark.frontmatter.materials.join(", ")}
-      </p>
       {markdownRemark.frontmatter.images && (
         <div style={{ textAlign: "center", minHeight: 300 }}>
           {markdownRemark.frontmatter.images.map(({ childImageSharp }) => (
@@ -23,7 +20,10 @@ export default ({ data: { markdownRemark } }) => {
           ))}
         </div>
       )}
-      <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+      <div>
+        <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+        <p></p>
+      </div>
     </Layout>
   )
 }
@@ -34,7 +34,6 @@ export const query = graphql`
       html
       frontmatter {
         title
-        materials
         images {
           childImageSharp {
             id

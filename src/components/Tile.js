@@ -22,7 +22,7 @@ export default function Tile({ node }) {
       <h4 className={styles.title} style={{ marginTop: rhythm(0.1) }}>
         {node.frontmatter.title}
       </h4>
-      <span style={scale(-0.5)}>{node.frontmatter.materials.join(", ")}</span>
+      {/*<span style={scale(-0.5)}>{node.frontmatter.materials.join(", ")}</span>*/}
     </Link>
   )
 }
