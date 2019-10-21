@@ -1,6 +1,7 @@
 const fs = require("fs")
+const findUp = require("find-up")
 
-fs.readFile("../products/products-2019-10-21.csv", "utf8", (err, data) => {
+fs.readFile("../products/products.csv", "utf8", (err, data) => {
   if (err) throw err
 
   const rows = data
@@ -31,6 +32,22 @@ function createPage([title, categories, description, url, images = ""]) {
       .map(img => {
         const [name, idExt] = img.split("__")
         const [, ext] = idExt.split(".")
+
+        const filename = `${name}.${ext}`
+
+        findUp(filename, {
+          cwd: dir,
+        }).then(file => {
+          if (file) {
+            // console.log("found", filename, file)
+            fs.copyFile(file, `${dir}${filename}`, err => {
+              if (err) throw err
+            })
+          } else {
+            console.error("Image not found:", title, img, filename)
+          }
+        })
+
         return `"./${name}.${ext}"`
       })
 
