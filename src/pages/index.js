@@ -15,7 +15,7 @@ export default ({ data: { allMarkdownRemark } }) => {
 
 export const query = graphql`
   query MyQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(limit: 10) {
       edges {
         node {
           id

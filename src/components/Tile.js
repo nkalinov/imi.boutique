@@ -2,7 +2,7 @@ import Img from "gatsby-image"
 import React from "react"
 import styles from "./Tile.module.css"
 import { Link } from "gatsby"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 export default function Tile({ node }) {
   return (
@@ -22,7 +22,6 @@ export default function Tile({ node }) {
       <h4 className={styles.title} style={{ marginTop: rhythm(0.1) }}>
         {node.frontmatter.title}
       </h4>
-      {/*<span style={scale(-0.5)}>{node.frontmatter.materials.join(", ")}</span>*/}
     </Link>
   )
 }

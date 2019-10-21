@@ -53,7 +53,7 @@ export default ({ children }) => {
             parent = newChild
           }
         })
-        return tree
+        return Object.values(tree).sort((a, b) => a.name.localeCompare(b.name))
       }, {}),
     [allMarkdownRemark]
   )
