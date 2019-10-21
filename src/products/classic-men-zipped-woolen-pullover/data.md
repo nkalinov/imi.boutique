@@ -1,6 +1,6 @@
 ---
 title: "Classic Men Zipped Woolen Pullover"
-content: ["100% wool"]
+materials: ["100% wool"]
 categories: ["men/pullovers"]
 images: [
 ./IMG_7483.JPG,

@@ -32,7 +32,8 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  // create product list pages
+
+  // create category list pages
   data.allMarkdownRemark.distinct.forEach(category => {
     createPage({
       path: `/${category}`,
@@ -40,6 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { category },
     })
   })
+
   // create product pages
   data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({

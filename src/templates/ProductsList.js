@@ -23,7 +23,7 @@ export const query = graphql`
           }
           frontmatter {
             title
-            content
+            materials
             images {
               childImageSharp {
                 fixed(width: 220) {

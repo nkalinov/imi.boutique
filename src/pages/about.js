@@ -6,6 +6,7 @@ export default () => {
   return (
     <Layout>
       <iframe
+        title="IMI Presentational Video"
         style={{ marginTop: rhythm(2) }}
         width="660"
         height="415"

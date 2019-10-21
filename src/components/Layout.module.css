@@ -1,9 +1,9 @@
 .layout {
   margin: 0 auto;
-  max-width: 1500px;
+  max-width: 1200px;
   padding: 0 1rem;
-  display: flex;
-  flex-flow: column wrap;
+  /*display: flex;*/
+  /*flex-flow: column wrap;*/
 }
 
 .header {
@@ -11,7 +11,6 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin-top: 0.1rem;
 }
 
 .nav {
@@ -21,8 +20,8 @@
   margin: 0 5px;
 }
 
-.content {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+.children {
+  /*display: flex;*/
+  /*flex-flow: row wrap;*/
+  /*justify-content: center;*/
 }
