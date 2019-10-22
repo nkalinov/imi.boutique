@@ -1,13 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import Tile from "../components/Tile"
+import ProductsList from "../components/ProductsList"
 
 export default ({ data: { allMarkdownRemark } }) => (
   <Layout>
-    {allMarkdownRemark.edges.map(({ node }) => (
-      <Tile key={node.id} node={node}></Tile>
-    ))}
+    <ProductsList nodes={allMarkdownRemark.edges} />
   </Layout>
 )
 
@@ -26,8 +24,8 @@ export const query = graphql`
             title
             images {
               childImageSharp {
-                fixed(width: 220) {
-                  ...GatsbyImageSharpFixed
+                fluid(maxWidth: 220, fit: CONTAIN) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

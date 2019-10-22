@@ -2,8 +2,6 @@
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 1rem;
-  /*display: flex;*/
-  /*flex-flow: column wrap;*/
 }
 
 .header {
@@ -21,7 +19,4 @@
 }
 
 .children {
-  /*display: flex;*/
-  /*flex-flow: row wrap;*/
-  /*justify-content: center;*/
 }

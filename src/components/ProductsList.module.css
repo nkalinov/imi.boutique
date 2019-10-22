@@ -1,5 +1,11 @@
+.wrapper {
+  /*column-count: 4;*/
+  /*column-gap: 1em;*/
+}
+
 .tile {
   position: relative;
+  width: 100%;
   max-width: 220px;
   display: inline-block;
   background: none;
@@ -7,6 +13,8 @@
 
 .title {
   margin: 0;
+  position: absolute;
+  padding: 5px;
 }
 
 .content {

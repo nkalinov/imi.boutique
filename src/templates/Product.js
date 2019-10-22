@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Img from "gatsby-image"
+import { rhythm } from "../utils/typography"
 
 export default ({ data: { markdownRemark } }) => {
   return (
@@ -13,7 +14,12 @@ export default ({ data: { markdownRemark } }) => {
         <div style={{ textAlign: "center", minHeight: 300 }}>
           {markdownRemark.frontmatter.images.map(({ childImageSharp }) => (
             <div
-              style={{ maxWidth: 550, width: "100%", display: "inline-block" }}
+              style={{
+                maxWidth: 550,
+                width: "100%",
+                display: "inline-block",
+                margin: rhythm(1),
+              }}
             >
               <Img key={childImageSharp.id} fluid={childImageSharp.fluid} />
             </div>

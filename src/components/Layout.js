@@ -18,47 +18,41 @@ export default ({ children }) => {
     `
   )
 
-  const tree = useMemo(
-    () =>
-      allMarkdownRemark.distinct.reduce((tree, value) => {
-        // 1. Accessories
-        // 2. Accessories/Gloves
-        // 3. Accessories/Hats
-        const categories = value.split("/")
+  const tree = useMemo(() => {
+    const tree = allMarkdownRemark.distinct.reduce((tree, value) => {
+      let parent
 
-        let parent
-        categories.forEach((cat, i) => {
-          // root
-          if (i === 0) {
-            // create new root
-            if (!tree[cat]) {
-              tree[cat] = {
-                name: cat,
-                children: [],
-              }
-            }
-
-            parent = tree[cat]
-          } else {
-            // push children
-            // todo check duplicate
-            const newChild = {
-              name: cat,
+      value.split("/").forEach((category, i) => {
+        // root
+        if (i === 0) {
+          // create new root
+          if (!tree[category]) {
+            tree[category] = {
+              name: category,
               children: [],
             }
-            // add new child
-            parent.children.push(newChild)
-
-            // mark as new parent for next iteration
-            parent = newChild
           }
-        })
-        return Object.values(tree).sort((a, b) => a.name.localeCompare(b.name))
-      }, {}),
-    [allMarkdownRemark]
-  )
 
-  console.log(tree)
+          parent = tree[category]
+        } else {
+          // push children
+          // todo check duplicate
+          const newChild = {
+            name: category,
+            children: [],
+          }
+          // add new child
+          parent.children.push(newChild)
+
+          // mark as new parent for next iteration
+          parent = newChild
+        }
+      })
+
+      return tree
+    }, {})
+    return Object.values(tree).sort((a, b) => a.name.localeCompare(b.name))
+  }, [allMarkdownRemark])
 
   return (
     <div className={styles.layout}>
