@@ -2,11 +2,13 @@ const fs = require("fs")
 const path = require("path")
 const findUp = require("find-up")
 
-fs.readFile("../products/products.csv", "utf8", (err, data) => {
+console.log(path.resolve("./products.csv"))
+
+fs.readFile(path.resolve("./products.csv"), "utf8", (err, data) => {
   if (err) throw err
 
   const rows = data
-    .split("\r\n")
+    .split("\n")
     .slice(1)
     .map(row => row.split("\t").map(cell => cell.replace(/\"|\'/g, "")))
 
@@ -23,7 +25,9 @@ function createPage([title, categories, description, url, images = ""]) {
   const destinationDir = path.resolve(`../products${url}`)
 
   fs.mkdir(destinationDir, { recursive: true }, async err => {
-    if (err) throw err
+    if (err) {
+      console.error(err)
+    }
 
     images = await Promise.all(
       images
@@ -36,38 +40,45 @@ function createPage([title, categories, description, url, images = ""]) {
 
           const filename = `${name}.${ext}`
           const source = await findUp(filename, { cwd: destinationDir })
-          const destination = path.resolve(`${destinationDir}/${filename}`)
 
-          // delete all
-          try {
-            //   fs.unlinkSync(source)
-            //   fs.unlinkSync(destination)
+          if (source) {
+            const destination = path.resolve(`${destinationDir}/${filename}`)
 
-            if (source) {
-              // move file to destination
-              fs.renameSync(source, destination)
-            } else {
-              console.error("Image not found:", title, img, filename)
+            try {
+              // delete source
+              // fs.unlinkSync(source)
+              // delete destination
+              fs.unlinkSync(destination)
+            } catch (e) {
+              // console.error(e)
             }
-          } catch (e) {
-            console.error("Error moving file", source, destination, e)
+
+            try {
+              // move source to destination
+              fs.renameSync(source, destination)
+              console.log("moved", source, "to", destination)
+            } catch (e) {
+              console.error("Error moving file", source, destination, e)
+            }
+          } else {
+            console.error("Image not found:", title, img, filename)
           }
 
           return `"./${name}.${ext}"`
         })
     )
 
-    fs.writeFile(
-      `${destinationDir}/data.md`,
-      `---
-title: "${title}"
-categories: [${categories.split(";").map(cat => `"${cat}"`)}]
-images: [${images}]
----`,
-      "utf8",
-      (err, done) => {
-        if (err) throw err
-      }
-    )
+    //     fs.writeFile(
+    //       `${destinationDir}/data.md`,
+    //       `---
+    // title: "${title}"
+    // categories: [${categories.split(";").map(cat => `"${cat}"`)}]
+    // images: [${images}]
+    // ---`,
+    //       "utf8",
+    //       (err, done) => {
+    //         if (err) throw err
+    //       }
+    //     )
   })
 }
