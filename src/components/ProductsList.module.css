@@ -1,6 +1,7 @@
 .wrapper {
-  /*column-count: 4;*/
-  /*column-gap: 1em;*/
+  column-count: 4;
+  column-gap: 1em;
+  text-align: center;
 }
 
 .tile {
@@ -15,6 +16,8 @@
   margin: 0;
   position: absolute;
   padding: 5px;
+  bottom: 0;
+  background: #fff;
 }
 
 .content {

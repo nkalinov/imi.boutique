@@ -4,7 +4,7 @@ import { rhythm } from "../utils/typography"
 
 export default () => {
   return (
-    <Layout>
+    <Layout style={{ textAlign: "center" }}>
       <iframe
         title="IMI Presentational Video"
         style={{ marginTop: rhythm(2) }}

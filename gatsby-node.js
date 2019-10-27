@@ -32,20 +32,20 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   // create category list pages
-  // data.allMarkdownRemark.distinct.forEach(category => {
-  //   createPage({
-  //     path: `/${category.toLowerCase()}`,
-  //     component: path.resolve(`src/templates/ProductsList.js`),
-  //     context: { category },
-  //   })
-  // })
-  //
-  // // create product pages
-  // data.allMarkdownRemark.edges.forEach(({ node }) => {
-  //   createPage({
-  //     path: node.fields.slug,
-  //     component: path.resolve(`src/templates/Product.js`),
-  //     context: { slug: node.fields.slug },
-  //   })
-  // })
+  data.allMarkdownRemark.distinct.forEach(category => {
+    createPage({
+      path: `/${category.toLowerCase()}`,
+      component: path.resolve(`src/templates/ProductsList.js`),
+      context: { category },
+    })
+  })
+
+  // create product pages
+  data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`src/templates/Product.js`),
+      context: { slug: node.fields.slug },
+    })
+  })
 }

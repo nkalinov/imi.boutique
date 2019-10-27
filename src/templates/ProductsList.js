@@ -13,6 +13,7 @@ export const query = graphql`
   query($category: [String]) {
     allMarkdownRemark(
       filter: { frontmatter: { categories: { in: $category } } }
+      sort: { fields: frontmatter___title }
     ) {
       edges {
         node {
@@ -24,8 +25,8 @@ export const query = graphql`
             title
             images {
               childImageSharp {
-                fluid(maxWidth: 220, fit: CONTAIN) {
-                  ...GatsbyImageSharpFluid
+                fixed(width: 220) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }

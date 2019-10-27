@@ -11,7 +11,7 @@ export default ({ data: { allMarkdownRemark } }) => (
 
 export const query = graphql`
   query {
-    allMarkdownRemark(limit: 16) {
+    allMarkdownRemark(sort: { fields: frontmatter___title }) {
       edges {
         node {
           id
@@ -22,8 +22,8 @@ export const query = graphql`
             title
             images {
               childImageSharp {
-                fluid(maxWidth: 220) {
-                  ...GatsbyImageSharpFluid
+                fixed(width: 220) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }

@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import styles from "./Layout.module.css"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
-export default ({ children }) => {
+export default ({ children, ...props }) => {
   const { allMarkdownRemark, site } = useStaticQuery(
     graphql`
       query {
@@ -55,7 +55,7 @@ export default ({ children }) => {
   }, [allMarkdownRemark])
 
   return (
-    <div className={styles.layout}>
+    <div className={styles.layout} {...props}>
       <header className={styles.header}>
         <h1>
           <Link to="/">{site.siteMetadata.title}</Link>

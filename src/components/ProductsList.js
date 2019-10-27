@@ -9,7 +9,7 @@ export default ({ nodes }) => (
       <Link key={node.id} to={node.fields.slug} className={styles.tile}>
         {node.frontmatter.images && (
           <Img
-            fluid={node.frontmatter.images[0].childImageSharp.fluid}
+            fixed={node.frontmatter.images[0].childImageSharp.fixed}
             alt="Image"
             title={node.frontmatter.title}
             className={styles.image}

@@ -15,7 +15,7 @@ export default ({ data: { markdownRemark } }) => {
           {markdownRemark.frontmatter.images.map(({ childImageSharp }) => (
             <div
               style={{
-                maxWidth: 550,
+                maxWidth: 700,
                 width: "100%",
                 display: "inline-block",
                 margin: rhythm(1),
@@ -43,7 +43,7 @@ export const query = graphql`
         images {
           childImageSharp {
             id
-            fluid(maxWidth: 550) {
+            fluid(maxWidth: 700) {
               ...GatsbyImageSharpFluid
             }
           }
