@@ -12,7 +12,6 @@ export default ({ nodes }) => (
             fixed={node.frontmatter.images[0].childImageSharp.fixed}
             alt="Image"
             title={node.frontmatter.title}
-            className={styles.image}
           />
         )}
         <h4 className={styles.title}>{node.frontmatter.title}</h4>

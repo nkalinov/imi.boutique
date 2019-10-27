@@ -10,19 +10,19 @@
   max-width: 220px;
   display: inline-block;
   background: none;
+  border: 1px solid #fff;
+}
+
+.tile:hover {
+  /*box-shadow: 0 5px 20px #ccc;*/
 }
 
 .title {
   margin: 0;
-  position: absolute;
-  padding: 5px;
-  bottom: 0;
-  background: #fff;
-}
-
-.content {
-  font-size: 12px;
-}
-
-.image {
+  padding: 0;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*background: #fff;*/
+  font-size: 13px;
+  /*color: #999;*/
 }

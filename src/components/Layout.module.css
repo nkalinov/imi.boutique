@@ -5,10 +5,7 @@
 }
 
 .header {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .nav {
@@ -16,6 +13,7 @@
 
 .navLink {
   margin: 0 5px;
+  display: inline-block;
 }
 
 .children {
