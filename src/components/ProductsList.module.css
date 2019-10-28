@@ -20,9 +20,18 @@
 .title {
   margin: 0;
   padding: 0;
-  /*position: absolute;*/
-  /*bottom: 0;*/
-  /*background: #fff;*/
-  font-size: 13px;
-  /*color: #999;*/
+  /*font-size: 13px;*/
+}
+
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .wrapper {
+    column-count: 1;
+  }
 }

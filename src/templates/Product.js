@@ -18,7 +18,6 @@ export default ({ data: { markdownRemark } }) => {
                 maxWidth: 700,
                 width: "100%",
                 display: "inline-block",
-                margin: rhythm(1),
               }}
             >
               <Img key={childImageSharp.id} fluid={childImageSharp.fluid} />

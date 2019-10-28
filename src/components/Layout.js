@@ -1,6 +1,7 @@
 import React, { useMemo } from "react"
 import styles from "./Layout.module.css"
 import { useStaticQuery, Link, graphql } from "gatsby"
+import { rhythm } from "../utils/typography"
 
 export default ({ children, ...props }) => {
   const { allMarkdownRemark, site } = useStaticQuery(
@@ -56,8 +57,8 @@ export default ({ children, ...props }) => {
 
   return (
     <div className={styles.layout} {...props}>
-      <header className={styles.header}>
-        <h1>
+      <header className={styles.header} style={{ margin: `${rhythm(1)} 0` }}>
+        <h1 style={{ fontSize: rhythm(2) }} className={styles.title}>
           <Link to="/">{site.siteMetadata.title}</Link>
         </h1>
         <nav className={styles.nav}>

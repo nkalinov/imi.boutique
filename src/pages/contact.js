@@ -41,7 +41,7 @@ export default () => {
         </p>
       </div>
       <div>
-        <h3>HQ Address</h3>
+        <h3>Main Address</h3>
         <p>
           The main boutique along with our factory is located in Teteven - a
           small town in north central Bulgaria -

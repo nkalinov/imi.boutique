@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import styles from "./ProductsList.module.css"
+import { scale } from "../utils/typography"
 
 export default ({ nodes }) => (
   <div className={styles.wrapper}>
@@ -14,7 +15,9 @@ export default ({ nodes }) => (
             title={node.frontmatter.title}
           />
         )}
-        <h4 className={styles.title}>{node.frontmatter.title}</h4>
+        <h4 className={styles.title} style={{ ...scale(-0.5) }}>
+          {node.frontmatter.title}
+        </h4>
       </Link>
     ))}
   </div>
