@@ -68,7 +68,8 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-src/products/**/*.jpg
-src/products/**/*.JPG
+src/products/**/*
+src/_products/**/*
+.yarn/cache
 
 .idea/

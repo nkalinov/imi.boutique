@@ -1,10 +1,10 @@
-import React from "react"
-import Layout from "../components/Layout"
-import { rhythm } from "../utils/typography"
+import React from 'react';
+import Layout from '../components/Layout';
+import { rhythm } from '../utils/typography';
 
-export default () => {
+export default function About() {
   return (
-    <Layout style={{ textAlign: "center" }}>
+    <Layout style={{ textAlign: 'center' }} fixed>
       <iframe
         title="IMI Presentational Video"
         style={{ marginTop: rhythm(2) }}
@@ -14,7 +14,7 @@ export default () => {
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-      ></iframe>
+      />
     </Layout>
-  )
+  );
 }

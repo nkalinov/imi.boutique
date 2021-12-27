@@ -1,10 +1,9 @@
-import React from "react"
-import Layout from "../components/Layout"
-import { rhythm } from "../utils/typography"
+import React from 'react';
+import Layout from '../components/Layout';
 
-export default () => {
+export default function Contact() {
   return (
-    <Layout>
+    <Layout fixed>
       <div>
         <h3>Mobile</h3>
         <ul>
@@ -18,13 +17,21 @@ export default () => {
       </div>
       <div>
         <h3>Email</h3>
-        <a href="mailto:contact@imi.boutique" target="_blank">
-          contact@imi.boutique
+        <a
+          href="mailto:contact@imi-teteven.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          contact@imi-teteven.com
         </a>
       </div>
       <div>
         <h3>
-          <a href="https://www.facebook.com/IMIteteven/" target="_blank">
+          <a
+            href="https://www.facebook.com/IMIteteven/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Facebook
           </a>
         </h3>
@@ -33,8 +40,12 @@ export default () => {
         <h3>Summer Season Address</h3>
         <p>
           During the summer season (May-Sep), you can find us in our retail shop
-          in the{" "}
-          <a href="https://goo.gl/maps/bhXTvJnN63v" target="_blank">
+          in the{' '}
+          <a
+            href="https://goo.gl/maps/bhXTvJnN63v"
+            target="_blank"
+            rel="noreferrer"
+          >
             Old Town of Nessebar, at 5 Ribarska Str
           </a>
           .
@@ -45,12 +56,16 @@ export default () => {
         <p>
           The main boutique along with our factory is located in Teteven - a
           small town in north central Bulgaria -
-          <a href="https://goo.gl/maps/MB47DGXCYVD2" target="_blank">
+          <a
+            href="https://goo.gl/maps/MB47DGXCYVD2"
+            target="_blank"
+            rel="noreferrer"
+          >
             view map
           </a>
           .
         </p>
       </div>
     </Layout>
-  )
+  );
 }

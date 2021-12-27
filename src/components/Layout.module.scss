@@ -1,0 +1,27 @@
+.layout {
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  &.fixed {
+    max-width: 1200px;
+  }
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.nav {
+}
+
+.navLink {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.children {
+}

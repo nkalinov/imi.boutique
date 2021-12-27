@@ -6,9 +6,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: `IMI`,
+    title: `IMI Boutique Teteven`,
   },
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -18,12 +19,12 @@ module.exports = {
         path: `${__dirname}/src/products/`,
       },
     },
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    'gatsby-plugin-sass',
   ],
-}
+};

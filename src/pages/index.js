@@ -1,35 +1,25 @@
-import React from "react"
-import Layout from "../components/Layout"
-import { graphql } from "gatsby"
-import ProductsList from "../components/ProductsList"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import ProductsList from '../components/ProductsList';
 
-export default ({ data: { allMarkdownRemark } }) => (
-  <Layout>
-    <ProductsList nodes={allMarkdownRemark.edges} />
-  </Layout>
-)
+export default function IndexPage({ data }) {
+  return (
+    <Layout>
+      <ProductsList nodes={data.allFile.nodes} />
+    </Layout>
+  );
+}
 
 export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: frontmatter___title }) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            images {
-              childImageSharp {
-                fixed(width: 220) {
-                  ...GatsbyImageSharpFixed
-                }
-              }
-            }
-          }
+  query MyQuery {
+    allFile(sort: { fields: name }) {
+      nodes {
+        name
+        childImageSharp {
+          gatsbyImageData
         }
       }
     }
   }
-`
+`;

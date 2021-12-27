@@ -1,37 +1,19 @@
 .wrapper {
-  column-count: 4;
-  column-gap: 1em;
+  columns: 6 200px;
+  column-gap: 0.5em;
   text-align: center;
 }
 
-.tile {
-  position: relative;
-  width: 100%;
-  max-width: 220px;
-  display: inline-block;
-  background: none;
-  border: 1px solid #fff;
+.img {
+  margin: 0.5em 0 0 0;
 }
-
-.tile:hover {
-  /*box-shadow: 0 5px 20px #ccc;*/
-}
-
-.title {
-  margin: 0;
-  padding: 0;
-  /*font-size: 13px;*/
-}
-
 
 @media only screen and (max-width: 768px) {
   .wrapper {
-    column-count: 2;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .wrapper {
-    column-count: 1;
   }
 }
