@@ -11,10 +11,9 @@ export default function ProductsList({ nodes }) {
         <a
           className={styles.item}
           key={file.name}
-          href={`mailto:info@imi-teteven.com?subject=Product%20Enquiry%20${file.name}&body=Hello%2C%0D%0AI%20would%20like to ask for a price list for this product: ${window.location.origin}${file.childImageSharp.gatsbyImageData.images.fallback.src}.%0D%0A
-          My size is:
-          %0D%0ABest regards,
-          Firstname Lastname
+          href={`mailto:info@imi-teteven.com?subject=Product%20Enquiry%20${file.name}&body=Hello%2C%0D%0A%0D%0AI%20would%20like to ask for more information about this product: https://imi-teteven.com${file.childImageSharp.gatsbyImageData.images.fallback.src} %0D%0A
+Best regards,%0D%0A
+(First name) (Last name)
         `}
         >
           <GatsbyImage
