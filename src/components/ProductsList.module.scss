@@ -1,0 +1,44 @@
+.wrapper {
+  columns: 6 200px;
+  column-gap: 0.5em;
+  text-align: center;
+}
+
+.item {
+  display: inline-block;
+  position: relative;
+  outline: none;
+
+  .title {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+    background-color: fade-out(lightpink, 0.8%);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 400;
+    margin: 0;
+    padding: 5px 10px;
+  }
+
+  &:hover {
+    .title {
+      opacity: 1;
+    }
+  }
+}
+
+.img {
+  margin: 0.5em 0 0 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .wrapper {
+  }
+}
